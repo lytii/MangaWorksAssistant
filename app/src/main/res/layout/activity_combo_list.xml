@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+   android:id="@+id/activity_main"
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:app="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context="com.example.longlam.mangaworksassistant.ComboListActivity">
+
+   <LinearLayout
+      android:id="@id/legends_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:orientation="horizontal"
+      android:paddingEnd="@dimen/edge_padding"
+      android:paddingStart="@dimen/edge_padding">`
+
+      <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:orientation="vertical">
+
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Theme"
+            android:textStyle="bold" />
+
+         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scene"
+            android:textStyle="bold" />
+      </LinearLayout>
+
+      <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight=".8"
+         android:text="Like"
+         android:textAlignment="center"
+         android:textAllCaps="true"
+         android:textSize="28sp" />
+
+      <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:text="Dislike"
+         android:textAlignment="textEnd"
+         android:textSize="28sp"
+         android:textStyle="italic" />
+   </LinearLayout>
+
+   <View
+      android:id="@+id/legends_divider"
+      style="@style/Divider"
+      android:layout_below="@id/legends_layout"/>
+
+   <android.support.v7.widget.RecyclerView
+      android:id="@id/combo_recycler_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/legends_divider"
+      android:layout_above="@id/add_buttons_layout" />
+
+   <LinearLayout
+      android:id="@id/add_buttons_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true">
+
+      <Button
+         android:id="@+id/update_theme_button"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight=".5"
+         android:text="Add Theme" />
+
+      <Button
+         android:id="@+id/update_scene_button"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight=".5"
+         android:text="Add Scene" />
+   </LinearLayout>
+</RelativeLayout>

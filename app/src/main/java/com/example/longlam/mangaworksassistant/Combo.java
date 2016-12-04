@@ -1,12 +1,12 @@
 package com.example.longlam.mangaworksassistant;
 
 public class Combo {
-   private String themeId = "";
-   private String sceneId = "";
-   private String likeIdA = "";
-   private String likeIdB = "";
-   private String dislikeIdA = "";
-   private String dislikeIdB = "";
+   private String themeId;
+   private String sceneId;
+   private String likeIdA;
+   private String likeIdB;
+   private String dislikeIdA;
+   private String dislikeIdB;
 
    public Combo(String themeId, String sceneId,
                 String likeIdA, String dislikeIdA,

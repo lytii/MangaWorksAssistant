@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <item type="id" name="combo_recycler_view" />
+   <item type="id" name="add_buttons_layout" />
+   <item type="id" name="legends_layout" />
+</resources>

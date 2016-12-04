@@ -1,6 +1,8 @@
 <resources>
    <string name="app_name">MangaWorksAssistant</string>
    <string name="save">Save</string>
+   <string name="update_theme_list">Update Theme List</string>
+   <string name="update_scene_list">Update Scene List</string>
    <string-array name="groups">
       <item>Boys</item>
       <item>Teen Boys</item>

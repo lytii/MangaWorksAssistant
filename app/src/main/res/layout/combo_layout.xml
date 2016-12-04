@@ -42,15 +42,22 @@
          android:id="@+id/like_text_view"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_weight=".85"
+         android:layout_weight=".8"
+         android:textAlignment="center"
          android:textAllCaps="true" />
 
       <TextView
          android:id="@+id/dislike_text_view"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_weight=".85"
+         android:layout_weight="1"
+         android:textAlignment="textEnd"
          android:textStyle="italic" />
    </LinearLayout>
+
+   <View
+      android:id="@+id/combo_divider"
+      style="@style/Divider"
+      android:layout_height=".5sp" />
 
 </android.support.v7.widget.CardView>
