@@ -1,0 +1,123 @@
+<resources>
+   <string name="app_name">MangaWorksAssistant</string>
+   <string name="save">Save</string>
+   <string-array name="groups">
+      <item>Boys</item>
+      <item>Teen Boys</item>
+      <item>College M</item>
+      <item>Office Workers M</item>
+      <item>Middle-aged M</item>
+      <item>Girls</item>
+      <item>Teen Girls</item>
+      <item>College F</item>
+      <item>Office Workers F</item>
+      <item>Moms</item>
+   </string-array>
+   
+   <string-array name="themes">
+      <item>Adventure</item>
+      <item>Aliens</item>
+      <item>Androids</item>
+      <item>Animals</item>
+      <item>Aristocrats</item>
+      <item>Babes</item>
+      <item>Bad Boy</item>
+      <item>Baseball</item>
+      <item>Basketball</item>
+      <item>Bugs</item>
+      <item>Business</item>
+      <item>Cat Ears</item>
+      <item>Computers</item>
+      <item>Cooking</item>
+      <item>Cute</item>
+      <item>Demons</item>
+      <item>Detective</item>
+      <item>Doctors</item>
+      <item>Dragons</item>
+      <item>Dream</item>
+      <item>Family</item>
+      <item>Firefighters</item>
+      <item>Fishing</item>
+      <item>Gambling</item>
+      <item>Gangsters</item>
+      <item>Genius</item>
+      <item>Ghosts</item>
+      <item>Giant Robots</item>
+      <item>High School</item>
+      <item>Horses</item>
+      <item>Hunks</item>
+      <item>Karate</item>
+      <item>Love</item>
+      <item>Magic</item>
+      <item>Manga</item>
+      <item>Monsters</item>
+      <item>Mystery</item>
+      <item>Nerds</item>
+      <item>Ninja</item>
+      <item>Pirates</item>
+      <item>Police</item>
+      <item>Politics</item>
+      <item>Pop Stars</item>
+      <item>Prince</item>
+      <item>Princess</item>
+      <item>Racing</item>
+      <item>Rivals</item>
+      <item>Robots</item>
+      <item>Royalty</item>
+      <item>Samurai</item>
+      <item>Secretary</item>
+      <item>Sexy</item>
+      <item>Snipers</item>
+      <item>Soccer</item>
+      <item>Sports</item>
+      <item>Spy</item>
+      <item>Sumo</item>
+      <item>Teaching</item>
+      <item>Tennis</item>
+      <item>Thieves</item>
+      <item>Toys</item>
+      <item>Treasure</item>
+      <item>Tricks</item>
+      <item>Underwear</item>
+      <item>Unique</item>
+      <item>Witches</item>
+      <item>World Dom.</item>
+      <item>World Peace</item>
+      <item>Youth</item>
+   </string-array>
+
+   <string-array name="scenes">
+      <item>Alt. World</item>
+      <item>Apartment</item>
+      <item>Campus</item>
+      <item>City</item>
+      <item>Classroom</item>
+      <item>Earth</item>
+      <item>Europe</item>
+      <item>Fantasy World</item>
+      <item>Feudal Jpn</item>
+      <item>Future</item>
+      <item>Hotel</item>
+      <item>House</item>
+      <item>Island</item>
+      <item>Modern Jpn</item>
+      <item>Nature</item>
+      <item>Office</item>
+      <item>Old Jpn</item>
+      <item>Open Sea</item>
+      <item>Pagoda</item>
+      <item>Prehistory</item>
+      <item>Present Day</item>
+      <item>Prison</item>
+      <item>Ruins</item>
+      <item>SF</item>
+      <item>Space</item>
+      <item>Stadium</item>
+      <item>Stone Age</item>
+      <item>Toilet</item>
+      <item>Trad. Jpn</item>
+      <item>VR</item>
+      <item>Warzone</item>
+      <item>Wild West</item>
+   </string-array>
+</resources>

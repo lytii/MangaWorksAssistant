@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+   android:id="@+id/activity_main"
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   tools:context="com.example.longlam.mangaworksassistant.ComboListActivity"
+   xmlns:app="http://schemas.android.com/apk/res-auto">
+
+   <LinearLayout
+      android:id="@+id/add_buttons_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true">
+
+      <Button
+         android:id="@+id/add_theme_button"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight=".5"
+         android:text="Add Theme" />
+
+      <Button
+         android:id="@+id/add_scene_button"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight=".5"
+         android:text="Add Scene" />
+   </LinearLayout>
+
+
+   <android.support.v7.widget.RecyclerView
+      android:id="@+id/combo_recycler_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@id/add_buttons_layout"/>
+
+</RelativeLayout>
