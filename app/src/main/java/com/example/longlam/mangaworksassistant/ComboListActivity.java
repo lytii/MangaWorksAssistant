@@ -1,7 +1,6 @@
 package com.example.longlam.mangaworksassistant;
 
 import android.content.DialogInterface;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +17,6 @@ import butterknife.OnClick;
 public class ComboListActivity extends AppCompatActivity {
 
    ComboListPresenter comboListPresenter;
-   Resources resources;
 
    @BindView(R.id.combo_recycler_view)
    RecyclerView comboRecyclerView;
@@ -31,7 +29,7 @@ public class ComboListActivity extends AppCompatActivity {
       }
       setContentView(R.layout.activity_combo_list);
       ButterKnife.bind(this);
-      getPresenter().setSome(15);
+      getPresenter().setFull();
    }
 
    protected ArrayList<String> getStringArray(int id) {
@@ -49,6 +47,16 @@ public class ComboListActivity extends AppCompatActivity {
       linearLayoutManager.scrollToPositionWithOffset(top, 20);
    }
 
+   @OnClick(R.id.scene_legend)
+   public void toggleSceneSortAsc() {
+      getPresenter().updateComboListBySceneAsc();
+   }
+
+   @OnClick(R.id.theme_legend)
+   public void toggleThemeSortAsc() {
+      getPresenter().updateComboListByTheme();
+   }
+
    @OnClick(R.id.update_scene_button)
    public void updateSceneList() {
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -63,7 +71,7 @@ public class ComboListActivity extends AppCompatActivity {
                @Override
                public void onClick(DialogInterface dialogInterface, int i) {
                   getPresenter().updateSceneList();
-                  getPresenter().updateComboList();
+                  getPresenter().updateComboListBySceneAsc();
                }
             })
             .show();
@@ -83,7 +91,7 @@ public class ComboListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                    getPresenter().updateThemeList();
-                   getPresenter().updateComboList();
+                   getPresenter().updateComboListBySceneAsc();
                 }
              })
              .show();

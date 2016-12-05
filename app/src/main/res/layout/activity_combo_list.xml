@@ -24,15 +24,18 @@
          android:orientation="vertical">
 
          <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/theme_legend"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Theme"
             android:textStyle="bold" />
 
          <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/scene_legend"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Scene"
+            android:layout_gravity="right"
             android:textStyle="bold" />
       </LinearLayout>
 

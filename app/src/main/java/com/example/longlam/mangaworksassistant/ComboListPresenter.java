@@ -12,6 +12,8 @@ public class ComboListPresenter {
    boolean[] themeCheckedItems;
    boolean[] newThemeCheckedItems;
    boolean[] newSceneCheckedItems;
+   boolean sceneAscToggle = false;
+   boolean themeAscToggle = false;
 
 
    public ComboListPresenter(ComboListActivity activity) {
@@ -36,7 +38,7 @@ public class ComboListPresenter {
       for (int i = 0; i < themeCheckedItems.length; i++) {
          themeCheckedItems[i] = true;
       }
-      updateComboList();
+      updateComboListBySceneAsc();
    }
 
    protected void setSome(int choice) {
@@ -46,7 +48,7 @@ public class ComboListPresenter {
       for (int i = 0; i < choice; i++) {
          themeCheckedItems[i] = true;
       }
-      updateComboList();
+      updateComboListBySceneAsc();
    }
 
    protected void setNone() {
@@ -86,52 +88,59 @@ public class ComboListPresenter {
 
    protected void updateComboListByTheme() {
 
+      themeAscToggle = !themeAscToggle;
       ArrayList<Combo> comboList = new ArrayList<Combo>();
       if (sceneCheckedItems == null || themeCheckedItems == null) {
          return;
       }
       for (int themeIndex = 0; themeIndex < themeCheckedItems.length; themeIndex++) {
-         if (!themeCheckedItems[themeIndex]) {
-            continue;
-         }
-         String themeItem = themeList.get(themeIndex);
-         for (int sceneIndex = 0; sceneIndex < sceneCheckedItems.length; sceneIndex++) {
-            if (!sceneCheckedItems[sceneIndex]) {
-               continue;
-            }
-            String sceneItem = sceneList.get(sceneIndex);
-            for (Combo comboItem : fullCombos) {
-               if (comboItem.isCombo(themeItem, sceneItem)) {
-                  comboList.add(comboList.size(), comboItem); // asc sort
-//                  comboList.add(0, comboItem); // desc sort
+         if (themeCheckedItems[themeIndex]) {
+            String themeItem = themeList.get(themeIndex);
+            for (int sceneIndex = 0; sceneIndex < sceneCheckedItems.length; sceneIndex++) {
+               if (sceneCheckedItems[sceneIndex]) {
+                  String sceneItem = sceneList.get(sceneIndex);
+                  for (Combo comboItem : fullCombos) {
+                     if (comboItem.isCombo(themeItem, sceneItem)) {
+                        if (themeAscToggle) {
+                           comboList.add(comboList.size(), comboItem); // asc sort
+                        } else {
+                           comboList.add(0, comboItem); // desc sort
+                        }
+                     }
+                  }
                }
             }
+            update(comboList);
          }
       }
-      update(comboList);
    }
 
-   protected void updateComboList() {
+   protected void updateComboListBySceneAsc() {
 
+      sceneAscToggle = !sceneAscToggle;
       ArrayList<Combo> comboList = new ArrayList<Combo>();
       if (sceneCheckedItems == null || themeCheckedItems == null) {
          return;
       }
       for (int sceneIndex = 0; sceneIndex < sceneCheckedItems.length; sceneIndex++) {
          if (sceneCheckedItems[sceneIndex]) {
-         for (int themeIndex = 0; themeIndex < themeCheckedItems.length; themeIndex++) {
-            if (themeCheckedItems[themeIndex]) {
-               String themeItem = themeList.get(themeIndex);
-               String sceneItem = sceneList.get(sceneIndex);
-               for (Combo comboItem : fullCombos) {
-                  if (comboItem.isCombo(themeItem, sceneItem)) {
-                     comboList.add(comboList.size(), comboItem); // asc sort
-//                  comboList.add(0, comboItem); // desc sort
+            for (int themeIndex = 0; themeIndex < themeCheckedItems.length; themeIndex++) {
+               if (themeCheckedItems[themeIndex]) {
+                  String themeItem = themeList.get(themeIndex);
+                  String sceneItem = sceneList.get(sceneIndex);
+                  for (Combo comboItem : fullCombos) {
+                     if (comboItem.isCombo(themeItem, sceneItem)) {
+                        if (sceneAscToggle) {
+                           comboList.add(comboList.size(), comboItem); // asc sort
+                        } else {
+                           comboList.add(0, comboItem); // desc sort
+                        }
+                     }
                   }
                }
             }
          }
+         update(comboList);
       }
-      update(comboList);
    }
 }
