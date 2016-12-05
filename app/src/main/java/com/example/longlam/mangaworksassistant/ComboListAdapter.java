@@ -1,6 +1,5 @@
 package com.example.longlam.mangaworksassistant;
 
-import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.ComboViewHolder> {
 
@@ -50,10 +48,10 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
    @Override
    public void onBindViewHolder(ComboListAdapter.ComboViewHolder holder, int position) {
       Combo combo = listOfCombos.get(position);
-      holder.themeTextView.setText(combo.getThemeId());
-      holder.sceneTextView.setText( combo.getSceneId());
-      holder.likeTextView.setText(combo.getLikeIdA() + "\n" + combo.getLikeIdB());
-      holder.dislikeTextView.setText(combo.getDislikeIdA() + "\n" + combo.getDislikeIdB());
+      holder.themeTextView.setText(combo.getTheme());
+      holder.sceneTextView.setText( combo.getScene());
+      holder.likeTextView.setText(combo.getLikeA() + "\n" + combo.getLikeB());
+      holder.dislikeTextView.setText(combo.getDislikeA() + "\n" + combo.getDislikeB());
    }
 
    @Override

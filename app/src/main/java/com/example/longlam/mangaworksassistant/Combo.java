@@ -1,79 +1,83 @@
 package com.example.longlam.mangaworksassistant;
 
 public class Combo {
-   private String themeId;
-   private String sceneId;
-   private String likeIdA;
-   private String likeIdB;
-   private String dislikeIdA;
-   private String dislikeIdB;
+   private String theme;
+   private String scene;
+   private String likeA;
+   private String likeB;
+   private String dislikeA;
+   private String dislikeB;
 
    public Combo(String themeId, String sceneId,
                 String likeIdA, String dislikeIdA,
                 String likeIdB, String dislikeIdB) {
-      this.sceneId = sceneId;
-      this.themeId = themeId;
-      this.likeIdA = likeIdA;
-      this.likeIdB = likeIdB;
-      this.dislikeIdA = dislikeIdA;
-      this.dislikeIdB = dislikeIdB;
+      this.scene = sceneId;
+      this.theme = themeId;
+      this.likeA = likeIdA;
+      this.likeB = likeIdB;
+      this.dislikeA = dislikeIdA;
+      this.dislikeB = dislikeIdB;
    }
 
 
-   public String getThemeId() {
-      return themeId;
+   public String getTheme() {
+      return theme;
    }
 
-   public void setThemeId(String themeId) {
-      this.themeId = themeId;
+   public void setTheme(String theme) {
+      this.theme = theme;
    }
 
 
-   public String getSceneId() {
+   public String getScene() {
 
-      return sceneId;
+      return scene;
    }
 
-   public void setSceneId(String sceneId) {
-      this.sceneId = sceneId;
+   public void setScene(String scene) {
+      this.scene = scene;
    }
 
-   public String getLikeIdA() {
+   public String getLikeA() {
 
-      return likeIdA;
+      return likeA;
    }
 
-   public void setLikeIdA(String likeIdA) {
-      this.likeIdA = likeIdA;
+   public void setLikeA(String likeA) {
+      this.likeA = likeA;
    }
 
-   public String getDislikeIdA() {
+   public String getDislikeA() {
 
-      return dislikeIdA;
+      return dislikeA;
    }
 
-   public void setDislikeIdA(String dislikeIdA) {
-      this.dislikeIdA = dislikeIdA;
+   public void setDislikeA(String dislikeA) {
+      this.dislikeA = dislikeA;
    }
 
-   public String getLikeIdB() {
+   public String getLikeB() {
 
-      return likeIdB;
+      return likeB;
    }
 
-   public void setLikeIdB(String likeIdB) {
-      this.likeIdB = likeIdB;
+   public void setLikeB(String likeB) {
+      this.likeB = likeB;
    }
 
-   public void setDislikeIdB(String dislikeIdB) {
-      this.dislikeIdB = dislikeIdB;
+   public void setDislikeB(String dislikeB) {
+      this.dislikeB = dislikeB;
    }
 
-   public String getDislikeIdB() {
-      return dislikeIdB;
+   public String getDislikeB() {
+      return dislikeB;
+   }
+
+   public boolean isCombo(String themeCompare, String sceneCompare) {
+      return theme.equals(themeCompare) && scene.equals(sceneCompare);
    }
 
    public String toString() {
-      return "Theme " + themeId + " Scene " + sceneId + " LikeA " + likeIdA + " DislikeA " + dislikeIdA + " LikeA " + likeIdB + " DislikeB " + dislikeIdB;
+      return "Theme " + theme + " Scene " + scene + " LikeA " + likeA + " DislikeA " + dislikeA + " LikeA " + likeB + " DislikeB " + dislikeB;
    }
 }

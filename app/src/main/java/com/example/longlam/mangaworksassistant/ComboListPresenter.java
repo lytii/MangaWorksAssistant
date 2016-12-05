@@ -1,12 +1,6 @@
 package com.example.longlam.mangaworksassistant;
 
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.OnClick;
 
 public class ComboListPresenter {
    private ComboListActivity activity;
@@ -107,7 +101,7 @@ public class ComboListPresenter {
             }
             String sceneItem = sceneList.get(sceneIndex);
             for (Combo comboItem : fullCombos) {
-               if (comboItem.getSceneId().equals(sceneItem) && comboItem.getThemeId().equals(themeItem)) {
+               if (comboItem.isCombo(themeItem, sceneItem)) {
                   comboList.add(comboList.size(), comboItem); // asc sort
 //                  comboList.add(0, comboItem); // desc sort
                }
@@ -124,19 +118,16 @@ public class ComboListPresenter {
          return;
       }
       for (int sceneIndex = 0; sceneIndex < sceneCheckedItems.length; sceneIndex++) {
-         if (!sceneCheckedItems[sceneIndex]) {
-            continue;
-         }
+         if (sceneCheckedItems[sceneIndex]) {
          for (int themeIndex = 0; themeIndex < themeCheckedItems.length; themeIndex++) {
-            if (!themeCheckedItems[themeIndex]) {
-               continue;
-            }
-            String themeItem = themeList.get(themeIndex);
-            String sceneItem = sceneList.get(sceneIndex);
-            for (Combo comboItem : fullCombos) {
-               if (comboItem.getSceneId().equals(sceneItem) && comboItem.getThemeId().equals(themeItem)) {
-                  comboList.add(comboList.size(), comboItem); // asc sort
+            if (themeCheckedItems[themeIndex]) {
+               String themeItem = themeList.get(themeIndex);
+               String sceneItem = sceneList.get(sceneIndex);
+               for (Combo comboItem : fullCombos) {
+                  if (comboItem.isCombo(themeItem, sceneItem)) {
+                     comboList.add(comboList.size(), comboItem); // asc sort
 //                  comboList.add(0, comboItem); // desc sort
+                  }
                }
             }
          }
