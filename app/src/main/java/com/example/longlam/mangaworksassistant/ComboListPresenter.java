@@ -3,9 +3,12 @@ package com.example.longlam.mangaworksassistant;
 import android.content.SharedPreferences;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ComboListPresenter {
    private ComboListActivity activity;
+   private ComboListAdapter adapter;
 
    String TAG = this.toString();
 
@@ -18,6 +21,7 @@ public class ComboListPresenter {
    boolean[] newSceneCheckedItems;
    boolean sceneAscToggle = false;
    boolean themeAscToggle = false;
+   boolean likeAscToggle = false;
 
 
    public ComboListPresenter(ComboListActivity activity) {
@@ -60,14 +64,15 @@ public class ComboListPresenter {
    }
 
    private void updateAdapter(ArrayList<Combo> comboArrayList) {
-      activity.setComboListRecyclerView(new ComboListAdapter(comboArrayList));
+      adapter = new ComboListAdapter(comboArrayList);
+      activity.setComboListRecyclerView(adapter);
    }
 
 
    protected void saveThemeSceneList() {
       SharedPreferences sharedPreferences = activity.getPreferences(0);
       SharedPreferences.Editor preferenceEditor = sharedPreferences.edit();
-      for(int i = 0; i < themeList.size(); i++) {
+      for (int i = 0; i < themeList.size(); i++) {
          preferenceEditor.putBoolean(themeList.get(i), themeCheckedItems[i]);
       }
       for (int i = 0; i < sceneList.size(); i++) {
@@ -78,7 +83,7 @@ public class ComboListPresenter {
 
    protected void loadThemeSceneList() {
       SharedPreferences sharedPreferences = activity.getPreferences(0);
-      for(int i = 0; i < themeList.size(); i++) {
+      for (int i = 0; i < themeList.size(); i++) {
          themeCheckedItems[i] = sharedPreferences.getBoolean(themeList.get(i), themeCheckedItems[i]);
       }
       for (int i = 0; i < sceneList.size(); i++) {
@@ -122,24 +127,20 @@ public class ComboListPresenter {
       }
       for (int themeIndex = 0; themeIndex < themeCheckedItems.length; themeIndex++) {
          if (themeCheckedItems[themeIndex]) {
-            String themeItem = themeList.get(themeIndex);
             for (int sceneIndex = 0; sceneIndex < sceneCheckedItems.length; sceneIndex++) {
                if (sceneCheckedItems[sceneIndex]) {
+                  String themeItem = themeList.get(themeIndex);
                   String sceneItem = sceneList.get(sceneIndex);
                   for (Combo comboItem : fullCombos) {
                      if (comboItem.isCombo(themeItem, sceneItem)) {
-                        if (themeAscToggle) {
-                           comboList.add(comboList.size(), comboItem); // asc sort
-                        } else {
-                           comboList.add(0, comboItem); // desc sort
-                        }
+                        comboList.add(themeAscToggle ? comboList.size() : 0, comboItem); // asc sort
                      }
                   }
                }
             }
-            updateAdapter(comboList);
          }
       }
+      updateAdapter(comboList);
    }
 
    protected void updateComboListByScene() {
@@ -157,17 +158,25 @@ public class ComboListPresenter {
                   String sceneItem = sceneList.get(sceneIndex);
                   for (Combo comboItem : fullCombos) {
                      if (comboItem.isCombo(themeItem, sceneItem)) {
-                        if (sceneAscToggle) {
-                           comboList.add(comboList.size(), comboItem); // asc sort
-                        } else {
-                           comboList.add(0, comboItem); // desc sort
-                        }
+                        comboList.add(sceneAscToggle ? comboList.size() : 0, comboItem); // asc sort
                      }
                   }
                }
             }
          }
-         updateAdapter(comboList);
       }
+      updateAdapter(comboList);
+   }
+
+   protected void updateComboListByLike() {
+      likeAscToggle = !likeAscToggle;
+      ArrayList<Combo> currentList = adapter.getListOfCombos();
+      Collections.sort(currentList, new Comparator<Combo>() {
+         @Override
+         public int compare(Combo combo, Combo t1) {
+            return likeAscToggle ? combo.getLikeA().compareTo(t1.getLikeA()) : t1.getLikeA().compareTo(combo.getLikeA());
+         }
+      });
+      updateAdapter(currentList);
    }
 }

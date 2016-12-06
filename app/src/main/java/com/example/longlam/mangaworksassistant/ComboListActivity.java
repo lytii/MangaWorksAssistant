@@ -29,6 +29,7 @@ public class ComboListActivity extends AppCompatActivity {
       }
       setContentView(R.layout.activity_combo_list);
       ButterKnife.bind(this);
+//      getPresenter().setFull();
       getPresenter().loadThemeSceneList();
    }
 
@@ -42,18 +43,13 @@ public class ComboListActivity extends AppCompatActivity {
       comboRecyclerView.setAdapter(comboListAdapter);
    }
 
-   protected void setRecyclerViewSnapping(LinearLayoutManager linearLayoutManager) {
-      int top = linearLayoutManager.findFirstCompletelyVisibleItemPosition();
-      linearLayoutManager.scrollToPositionWithOffset(top, 20);
-   }
-
    @OnClick(R.id.scene_legend)
-   public void toggleSceneSortAsc() {
+   public void toggleSceneSort() {
       getPresenter().updateComboListByScene();
    }
 
    @OnClick(R.id.theme_legend)
-   public void toggleThemeSortAsc() {
+   public void toggleThemeSort() {
       getPresenter().updateComboListByTheme();
    }
 
@@ -99,6 +95,11 @@ public class ComboListActivity extends AppCompatActivity {
                 }
              })
              .show();
+   }
+
+   @OnClick(R.id.like_legend)
+   public void toggleLikeSort() {
+      getPresenter().updateComboListByLike();
    }
 
    protected ComboListPresenter getPresenter() {

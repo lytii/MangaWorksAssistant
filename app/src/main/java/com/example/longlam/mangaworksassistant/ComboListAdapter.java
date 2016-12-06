@@ -14,7 +14,6 @@ import butterknife.ButterKnife;
 public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.ComboViewHolder> {
 
    private ArrayList<Combo> listOfCombos;
-   private ComboListAdapter adapter;
 
    public class ComboViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,7 +34,6 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
 
    public ComboListAdapter(ArrayList<Combo> listOfCombos) {
       this.listOfCombos = listOfCombos;
-      this.adapter = this;
    }
 
    @Override
@@ -57,5 +55,9 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
    @Override
    public int getItemCount() {
       return listOfCombos.size();
+   }
+
+   public ArrayList<Combo> getListOfCombos() {
+      return listOfCombos;
    }
 }
