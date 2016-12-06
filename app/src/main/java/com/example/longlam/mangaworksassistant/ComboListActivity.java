@@ -29,7 +29,7 @@ public class ComboListActivity extends AppCompatActivity {
       }
       setContentView(R.layout.activity_combo_list);
       ButterKnife.bind(this);
-      getPresenter().setFull();
+      getPresenter().loadThemeSceneList();
    }
 
    protected ArrayList<String> getStringArray(int id) {
@@ -49,7 +49,7 @@ public class ComboListActivity extends AppCompatActivity {
 
    @OnClick(R.id.scene_legend)
    public void toggleSceneSortAsc() {
-      getPresenter().updateComboListBySceneAsc();
+      getPresenter().updateComboListByScene();
    }
 
    @OnClick(R.id.theme_legend)
@@ -61,20 +61,22 @@ public class ComboListActivity extends AppCompatActivity {
    public void updateSceneList() {
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
       builder.setTitle(R.string.update_scene_list)
-            .setMultiChoiceItems(R.array.scenes, getPresenter().getSceneCheckedItems(), new DialogInterface.OnMultiChoiceClickListener() {
-               @Override
-               public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-                  getPresenter().newSceneItem(i, b);
-               }
-            })
-            .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
-               @Override
-               public void onClick(DialogInterface dialogInterface, int i) {
-                  getPresenter().updateSceneList();
-                  getPresenter().updateComboListBySceneAsc();
-               }
-            })
-            .show();
+             .setMultiChoiceItems(R.array.scenes, getPresenter().getSceneCheckedItems(), new DialogInterface.OnMultiChoiceClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                   getPresenter().newSceneItem(i, b);
+                }
+             })
+             .setNegativeButton("Cancel", null)
+             .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                   getPresenter().saveThemeSceneList();
+                   getPresenter().updateSceneList();
+                   getPresenter().updateComboListByScene();
+                }
+             })
+             .show();
    }
 
    @OnClick(R.id.update_theme_button)
@@ -87,11 +89,13 @@ public class ComboListActivity extends AppCompatActivity {
                    getPresenter().newThemeItem(i, b);
                 }
              })
+             .setNegativeButton("Cancel", null)
              .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+                   getPresenter().saveThemeSceneList();
                    getPresenter().updateThemeList();
-                   getPresenter().updateComboListBySceneAsc();
+                   getPresenter().updateComboListByScene();
                 }
              })
              .show();

@@ -1,9 +1,13 @@
 package com.example.longlam.mangaworksassistant;
 
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 
 public class ComboListPresenter {
    private ComboListActivity activity;
+
+   String TAG = this.toString();
 
    ArrayList<String> sceneList;
    ArrayList<String> themeList;
@@ -38,7 +42,7 @@ public class ComboListPresenter {
       for (int i = 0; i < themeCheckedItems.length; i++) {
          themeCheckedItems[i] = true;
       }
-      updateComboListBySceneAsc();
+      updateComboListByScene();
    }
 
    protected void setSome(int choice) {
@@ -48,17 +52,40 @@ public class ComboListPresenter {
       for (int i = 0; i < choice; i++) {
          themeCheckedItems[i] = true;
       }
-      updateComboListBySceneAsc();
+      updateComboListByScene();
    }
 
    protected void setNone() {
-      update(new ArrayList<Combo>());
+      updateAdapter(new ArrayList<Combo>());
    }
 
-   private void update(ArrayList<Combo> comboArrayList) {
+   private void updateAdapter(ArrayList<Combo> comboArrayList) {
       activity.setComboListRecyclerView(new ComboListAdapter(comboArrayList));
    }
 
+
+   protected void saveThemeSceneList() {
+      SharedPreferences sharedPreferences = activity.getPreferences(0);
+      SharedPreferences.Editor preferenceEditor = sharedPreferences.edit();
+      for(int i = 0; i < themeList.size(); i++) {
+         preferenceEditor.putBoolean(themeList.get(i), themeCheckedItems[i]);
+      }
+      for (int i = 0; i < sceneList.size(); i++) {
+         preferenceEditor.putBoolean(sceneList.get(i), sceneCheckedItems[i]);
+      }
+      preferenceEditor.apply();
+   }
+
+   protected void loadThemeSceneList() {
+      SharedPreferences sharedPreferences = activity.getPreferences(0);
+      for(int i = 0; i < themeList.size(); i++) {
+         themeCheckedItems[i] = sharedPreferences.getBoolean(themeList.get(i), themeCheckedItems[i]);
+      }
+      for (int i = 0; i < sceneList.size(); i++) {
+         sceneCheckedItems[i] = sharedPreferences.getBoolean(sceneList.get(i), sceneCheckedItems[i]);
+      }
+      updateComboListByTheme();
+   }
 
    protected boolean[] getThemeCheckedItems() {
       newThemeCheckedItems = themeCheckedItems;
@@ -110,12 +137,12 @@ public class ComboListPresenter {
                   }
                }
             }
-            update(comboList);
+            updateAdapter(comboList);
          }
       }
    }
 
-   protected void updateComboListBySceneAsc() {
+   protected void updateComboListByScene() {
 
       sceneAscToggle = !sceneAscToggle;
       ArrayList<Combo> comboList = new ArrayList<Combo>();
@@ -140,7 +167,7 @@ public class ComboListPresenter {
                }
             }
          }
-         update(comboList);
+         updateAdapter(comboList);
       }
    }
 }
