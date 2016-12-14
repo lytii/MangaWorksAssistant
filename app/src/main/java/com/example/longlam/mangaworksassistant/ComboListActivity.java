@@ -34,7 +34,7 @@ public class ComboListActivity extends AppCompatActivity {
    }
 
    protected ArrayList<String> getStringArray(int id) {
-      return new ArrayList<String>(Arrays.asList(getResources().getStringArray(id)));
+      return new ArrayList<>(Arrays.asList(getResources().getStringArray(id)));
    }
 
    protected void setComboListRecyclerView(ComboListAdapter comboListAdapter) {

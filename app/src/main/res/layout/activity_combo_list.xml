@@ -2,7 +2,6 @@
 <RelativeLayout
    android:id="@+id/activity_main"
    xmlns:android="http://schemas.android.com/apk/res/android"
-   xmlns:app="http://schemas.android.com/apk/res-auto"
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
@@ -14,28 +13,46 @@
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
       android:orientation="horizontal"
-      android:paddingEnd="@dimen/edge_padding"
-      android:paddingStart="@dimen/edge_padding">`
+      android:paddingBottom="@dimen/edge_padding"
+      android:paddingTop="@dimen/edge_padding">
 
       <LinearLayout
+         android:id="@+id/theme_scene_legend_layout"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_weight="1"
-         android:orientation="vertical">
+         android:divider="@color/colorPrimaryDark"
+         android:showDividers="middle">
 
          <TextView
             android:id="@+id/theme_legend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Theme"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingEnd="@dimen/edge_padding"
+            android:paddingStart="@dimen/edge_padding"
+            android:text="@string/theme_legend"
+            android:textSize="@dimen/legendfont"
             android:textStyle="bold" />
+
+
+         <View
+            android:id="@+id/theme_scene_divider"
+            style="@style/Divider"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent" />
 
          <TextView
             android:id="@+id/scene_legend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Scene"
-            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingEnd="@dimen/edge_padding"
+            android:paddingStart="@dimen/edge_padding"
+            android:text="@string/scene_legend"
+            android:textSize="@dimen/legendfont"
             android:textStyle="bold" />
       </LinearLayout>
 
@@ -43,33 +60,25 @@
          android:id="@+id/like_legend"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_weight=".8"
-         android:text="Like"
+         android:layout_weight="1"
+         android:text="@string/like_legend"
          android:textAlignment="center"
          android:textAllCaps="true"
-         android:textSize="28sp" />
-
-      <TextView
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_weight="1"
-         android:text="Dislike"
-         android:textAlignment="textEnd"
-         android:textSize="28sp"
-         android:textStyle="italic" />
+         android:textSize="@dimen/legendfont" />
    </LinearLayout>
 
    <View
       android:id="@+id/legends_divider"
       style="@style/Divider"
-      android:layout_below="@id/legends_layout"/>
+      android:layout_below="@id/legends_layout" />
 
    <android.support.v7.widget.RecyclerView
       android:id="@id/combo_recycler_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:layout_above="@id/add_buttons_layout"
       android:layout_below="@id/legends_divider"
-      android:layout_above="@id/add_buttons_layout" />
+      android:paddingBottom="20dp" />
 
    <LinearLayout
       android:id="@id/add_buttons_layout"
@@ -82,13 +91,13 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_weight=".5"
-         android:text="Add Theme" />
+         android:text="@string/add_theme" />
 
       <Button
          android:id="@+id/update_scene_button"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_weight=".5"
-         android:text="Add Scene" />
+         android:text="@string/add_scene" />
    </LinearLayout>
 </RelativeLayout>

@@ -23,8 +23,6 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
       TextView sceneTextView;
       @BindView(R.id.like_text_view)
       TextView likeTextView;
-      @BindView(R.id.dislike_text_view)
-      TextView dislikeTextView;
 
       public ComboViewHolder(View itemView) {
          super(itemView);
@@ -47,9 +45,8 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
    public void onBindViewHolder(ComboListAdapter.ComboViewHolder holder, int position) {
       Combo combo = listOfCombos.get(position);
       holder.themeTextView.setText(combo.getTheme());
-      holder.sceneTextView.setText( combo.getScene());
+      holder.sceneTextView.setText(combo.getScene());
       holder.likeTextView.setText(combo.getLikeA() + "\n" + combo.getLikeB());
-      holder.dislikeTextView.setText(combo.getDislikeA() + "\n" + combo.getDislikeB());
    }
 
    @Override

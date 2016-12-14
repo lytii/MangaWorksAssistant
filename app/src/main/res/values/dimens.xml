@@ -3,4 +3,5 @@
    <dimen name="activity_horizontal_margin">16dp</dimen>
    <dimen name="activity_vertical_margin">16dp</dimen>
    <dimen name="edge_padding">10sp</dimen>
+   <dimen name="legendfont">23sp</dimen>
 </resources>

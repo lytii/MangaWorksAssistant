@@ -3,62 +3,73 @@
    android:id="@+id/card_view"
    xmlns:android="http://schemas.android.com/apk/res/android"
    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+   xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="wrap_content"
-   android:layout_gravity="center"
-   card_view:cardCornerRadius="4dp">
+   android:elevation="2dp"
+   card_view:cardCornerRadius="8dp">
 
    <LinearLayout
       android:id="@+id/activity_main"
       xmlns:android="http://schemas.android.com/apk/res/android"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="horizontal"
       android:paddingBottom="@dimen/edge_padding"
       android:paddingEnd="@dimen/edge_padding"
       android:paddingStart="@dimen/edge_padding"
       android:paddingTop="@dimen/edge_padding">
 
       <LinearLayout
+         android:id="@+id/theme_scene_layout"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"
+         android:layout_height="match_parent"
          android:layout_weight="1"
-         android:orientation="vertical">
+         android:orientation="horizontal">
 
          <TextView
             android:id="@+id/theme_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:textStyle="bold"
+            tools:text="theme_view" />
+
+         <View
+            android:id="@+id/theme_scene_divider"
+            style="@style/Divider"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent" />
 
          <TextView
             android:id="@+id/scene_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="textEnd"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:paddingEnd="@dimen/edge_padding"
+            android:paddingStart="@dimen/edge_padding"
+            android:textStyle="bold"
+            tools:text="scene_view" />
       </LinearLayout>
+
+      <View
+         android:id="@+id/theme_scene_combo_divider"
+         style="@style/Divider"
+         android:layout_width="2dp"
+         android:layout_height="match_parent" />
 
       <TextView
          android:id="@+id/like_text_view"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_weight=".8"
-         android:textAlignment="center"
-         android:textAllCaps="true" />
-
-      <TextView
-         android:id="@+id/dislike_text_view"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
          android:layout_weight="1"
-         android:textAlignment="textEnd"
-         android:textStyle="italic" />
+         android:textAlignment="center"
+         android:textAllCaps="true"
+         tools:text="like_view" />
    </LinearLayout>
 
    <View
       android:id="@+id/combo_divider"
       style="@style/Divider"
-      android:layout_height=".5sp" />
+      android:layout_height="1dp" />
 
 </android.support.v7.widget.CardView>

@@ -3,6 +3,11 @@
    <string name="save">Save</string>
    <string name="update_theme_list">Update Theme List</string>
    <string name="update_scene_list">Update Scene List</string>
+   <string name="theme_legend">Theme</string>
+   <string name="scene_legend">Scene</string>
+   <string name="like_legend">Like</string>
+   <string name="add_theme">Add Theme</string>
+   <string name="add_scene">Add Scene</string>
    <string-array name="groups">
       <item>Boys</item>
       <item>Teen Boys</item>
