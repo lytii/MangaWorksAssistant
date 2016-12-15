@@ -1,6 +1,7 @@
 package com.example.longlam.mangaworksassistant;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,10 @@ public class ComboListActivity extends AppCompatActivity {
    public void toggleThemeSort() {
       getPresenter().updateComboListByTheme();
    }
+
+//   public void goToUpdateScene() {
+//      startActivity(new Intent(this, UpdateListActivity.class));
+//   }
 
    @OnClick(R.id.update_scene_button)
    public void updateSceneList() {

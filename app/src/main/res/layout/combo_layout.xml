@@ -34,12 +34,6 @@
             android:textStyle="bold"
             tools:text="theme_view" />
 
-         <View
-            android:id="@+id/theme_scene_divider"
-            style="@style/Divider"
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent" />
-
          <TextView
             android:id="@+id/scene_text_view"
             android:layout_width="match_parent"

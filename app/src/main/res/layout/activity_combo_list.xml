@@ -20,41 +20,36 @@
          android:id="@+id/theme_scene_legend_layout"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_weight="1"
-         android:divider="@color/colorPrimaryDark"
-         android:showDividers="middle">
+         android:layout_weight="1">
 
          <TextView
             android:id="@+id/theme_legend"
+            style="@style/ThemeSceneHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingEnd="@dimen/edge_padding"
-            android:paddingStart="@dimen/edge_padding"
-            android:text="@string/theme_legend"
-            android:textSize="@dimen/legendfont"
-            android:textStyle="bold" />
+            android:text="@string/theme_legend" />
 
-
-         <View
-            android:id="@+id/theme_scene_divider"
-            style="@style/Divider"
-            android:layout_width="0.5dp"
-            android:layout_height="match_parent" />
+         <!--<View-->
+            <!--style="@style/Divider"-->
+            <!--android:layout_width="0.5dp"-->
+            <!--android:layout_height="match_parent" />-->
 
          <TextView
             android:id="@+id/scene_legend"
+            style="@style/ThemeSceneHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:paddingEnd="@dimen/edge_padding"
-            android:paddingStart="@dimen/edge_padding"
-            android:text="@string/scene_legend"
-            android:textSize="@dimen/legendfont"
-            android:textStyle="bold" />
+            android:text="@string/scene_legend" />
+
       </LinearLayout>
+
+      <View
+         android:id="@+id/theme_scene_combo_divider"
+         style="@style/Divider"
+         android:layout_width="2dp"
+         android:layout_height="match_parent" />
 
       <TextView
          android:id="@+id/like_legend"
@@ -77,8 +72,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_above="@id/add_buttons_layout"
-      android:layout_below="@id/legends_divider"
-      android:paddingBottom="20dp" />
+      android:layout_below="@id/legends_divider"/>
 
    <LinearLayout
       android:id="@id/add_buttons_layout"
