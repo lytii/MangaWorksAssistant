@@ -1,10 +1,13 @@
-package com.example.longlam.mangaworksassistant;
+package com.example.longlam.mangaworksassistant.comboList;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.longlam.mangaworksassistant.Combo;
+import com.example.longlam.mangaworksassistant.R;
 
 import java.util.ArrayList;
 
@@ -17,9 +20,9 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
 
    public class ComboViewHolder extends RecyclerView.ViewHolder {
 
-      @BindView(R.id.theme_text_view)
+      @BindView(R.id.theme_item)
       TextView themeTextView;
-      @BindView(R.id.scene_text_view)
+      @BindView(R.id.scene_theme_item)
       TextView sceneTextView;
       @BindView(R.id.like_text_view)
       TextView likeTextView;
@@ -37,7 +40,7 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
    @Override
    public ComboViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
       View view = LayoutInflater.from(parent.getContext())
-                                .inflate(R.layout.combo_layout, parent, false);
+                                .inflate(R.layout.combo_list_layout, parent, false);
       return new ComboViewHolder(view);
    }
 

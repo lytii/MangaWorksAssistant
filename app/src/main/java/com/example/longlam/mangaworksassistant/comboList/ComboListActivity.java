@@ -1,4 +1,4 @@
-package com.example.longlam.mangaworksassistant;
+package com.example.longlam.mangaworksassistant.comboList;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,6 +7,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+
+import com.example.longlam.mangaworksassistant.R;
+import com.example.longlam.mangaworksassistant.sceneTheme.UpdateListActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +21,7 @@ import butterknife.OnClick;
 
 public class ComboListActivity extends AppCompatActivity {
 
+   static final int UPDATE_LIST_REQUEST = 1;
    ComboListPresenter comboListPresenter;
 
    @BindView(R.id.combo_recycler_view)
@@ -28,9 +33,13 @@ public class ComboListActivity extends AppCompatActivity {
       if (comboListPresenter == null) {
          comboListPresenter = new ComboListPresenter(this);
       }
-      setContentView(R.layout.activity_combo_list);
+      setContentView(R.layout.combo_list_activity);
       ButterKnife.bind(this);
-//      getPresenter().setFull();
+   }
+
+   @Override
+   protected void onResume() {
+      super.onResume();
       getPresenter().loadThemeSceneList();
    }
 
@@ -45,20 +54,26 @@ public class ComboListActivity extends AppCompatActivity {
    }
 
    @OnClick(R.id.scene_legend)
-   public void toggleSceneSort() {
-      getPresenter().updateComboListByScene();
-   }
+   public void doSomething() {
 
-   @OnClick(R.id.theme_legend)
+   }
+//   public void toggleSceneSort() {
+//      getPresenter().updateComboListByScene();
+//   }
+
+//   @OnClick(R.id.theme_legend)
    public void toggleThemeSort() {
       getPresenter().updateComboListByTheme();
    }
 
-//   public void goToUpdateScene() {
-//      startActivity(new Intent(this, UpdateListActivity.class));
-//   }
-
    @OnClick(R.id.update_scene_button)
+   public void goToUpdateScene() {
+      Intent intent = new Intent(this, UpdateListActivity.class);
+      intent.putExtra("Intent", "what is sup");
+      startActivityForResult(intent, UPDATE_LIST_REQUEST);
+      Log.d(this.getClass().getSimpleName(), "startActiity");
+   }
+
    public void updateSceneList() {
       AlertDialog.Builder builder = new AlertDialog.Builder(this);
       builder.setTitle(R.string.update_scene_list)

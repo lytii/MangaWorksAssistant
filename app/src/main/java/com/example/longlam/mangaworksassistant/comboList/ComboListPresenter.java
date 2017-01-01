@@ -1,6 +1,11 @@
-package com.example.longlam.mangaworksassistant;
+package com.example.longlam.mangaworksassistant.comboList;
 
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import com.example.longlam.mangaworksassistant.Combo;
+import com.example.longlam.mangaworksassistant.HardCodedCombos;
+import com.example.longlam.mangaworksassistant.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,31 +43,6 @@ public class ComboListPresenter {
       fullCombos = HardCodedCombos.parseCombos();
    }
 
-   // Sets ALL Scenes and Themes
-   protected void setFull() {
-      for (int i = 0; i < sceneCheckedItems.length; i++) {
-         sceneCheckedItems[i] = true;
-      }
-      for (int i = 0; i < themeCheckedItems.length; i++) {
-         themeCheckedItems[i] = true;
-      }
-      updateComboListByScene();
-   }
-
-   protected void setSome(int choice) {
-      for (int i = 0; i < choice; i++) {
-         sceneCheckedItems[i] = true;
-      }
-      for (int i = 0; i < choice; i++) {
-         themeCheckedItems[i] = true;
-      }
-      updateComboListByScene();
-   }
-
-   protected void setNone() {
-      updateAdapter(new ArrayList<Combo>());
-   }
-
    private void updateAdapter(ArrayList<Combo> comboArrayList) {
       adapter = new ComboListAdapter(comboArrayList);
       activity.setComboListRecyclerView(adapter);
@@ -70,7 +50,7 @@ public class ComboListPresenter {
 
 
    protected void saveThemeSceneList() {
-      SharedPreferences sharedPreferences = activity.getPreferences(0);
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
       SharedPreferences.Editor preferenceEditor = sharedPreferences.edit();
       for (int i = 0; i < themeList.size(); i++) {
          preferenceEditor.putBoolean(themeList.get(i), themeCheckedItems[i]);
@@ -82,7 +62,7 @@ public class ComboListPresenter {
    }
 
    protected void loadThemeSceneList() {
-      SharedPreferences sharedPreferences = activity.getPreferences(0);
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
       for (int i = 0; i < themeList.size(); i++) {
          themeCheckedItems[i] = sharedPreferences.getBoolean(themeList.get(i), themeCheckedItems[i]);
       }

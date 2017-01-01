@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+   android:id="@+id/activity_update_list"
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent">
+
+   <LinearLayout
+      android:id="@+id/theme_scene_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:elevation="2dp"
+      android:orientation="horizontal">
+
+      <TextView
+         android:id="@+id/theme_legend"
+         style="@style/ThemeSceneHeader"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:text="@string/theme_legend"
+         android:textAlignment="center" />
+
+      <View
+         style="@style/Divider"
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@color/cardview_dark_background" />
+
+      <TextView
+         style="@style/ThemeSceneHeader"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:text="@string/scene_legend"
+         android:textAlignment="center" />
+
+   </LinearLayout>
+
+   <View
+      android:id="@+id/legends_divider"
+      style="@style/Divider"
+      android:layout_alignBottom="@id/theme_scene_layout">
+   </View>
+
+   <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="horizontal"
+      android:layout_above="@id/update_buttons_layout"
+      android:layout_below="@id/legends_divider">
+
+      <android.support.v7.widget.RecyclerView
+         android:layout_weight="1"
+         android:id="@+id/update_list_scene_recycler"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+      </android.support.v7.widget.RecyclerView>
+
+      <View
+         style="@style/Divider"
+         android:layout_width="2dp"
+         android:layout_height="match_parent"
+         android:background="@color/cardview_dark_background" />
+
+      <android.support.v7.widget.RecyclerView
+         android:layout_weight="1"
+         android:id="@+id/update_list_theme_recycler"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+      </android.support.v7.widget.RecyclerView>
+
+   </LinearLayout>
+
+   <LinearLayout
+      android:id="@id/update_buttons_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true">
+
+      <Button
+         android:id="@+id/cancel_button"
+         android:layout_weight="1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="Cancel"/>
+
+      <Button
+         android:id="@+id/save_button"
+         android:layout_weight="1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="Save"/>
+
+   </LinearLayout>
+
+</RelativeLayout>

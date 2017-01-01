@@ -2,7 +2,7 @@
 <manifest package="com.example.longlam.mangaworksassistant"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
-   <uses-permission android:name="android.permission.INTERNET"/>
+   <uses-permission android:name="android.permission.INTERNET" />
 
    <application
       android:allowBackup="true"
@@ -10,7 +10,7 @@
       android:label="@string/app_name"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-      <activity android:name=".ComboListActivity">
+      <activity android:name=".comboList.ComboListActivity">
          <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -18,9 +18,9 @@
          </intent-filter>
       </activity>
 
-      <activity android:name=".UpdateListActivity"/>
+      <activity android:name=".sceneTheme.UpdateListActivity">
+      </activity>
 
    </application>
-
 
 </manifest>

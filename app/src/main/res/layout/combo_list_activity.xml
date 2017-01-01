@@ -5,7 +5,7 @@
    xmlns:tools="http://schemas.android.com/tools"
    android:layout_width="match_parent"
    android:layout_height="match_parent"
-   tools:context="com.example.longlam.mangaworksassistant.ComboListActivity">
+   tools:context="com.example.longlam.mangaworksassistant.comboList.ComboListActivity">
 
    <LinearLayout
       android:id="@id/legends_layout"
@@ -29,11 +29,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/theme_legend" />
-
-         <!--<View-->
-            <!--style="@style/Divider"-->
-            <!--android:layout_width="0.5dp"-->
-            <!--android:layout_height="match_parent" />-->
 
          <TextView
             android:id="@+id/scene_legend"
