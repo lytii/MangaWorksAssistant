@@ -8,8 +8,6 @@ import com.example.longlam.mangaworksassistant.HardCodedCombos;
 import com.example.longlam.mangaworksassistant.R;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class ComboListPresenter {
    private ComboListActivity activity;
@@ -22,7 +20,6 @@ public class ComboListPresenter {
    ArrayList<Combo> fullCombos;
    boolean[] sceneCheckedItems;
    boolean[] themeCheckedItems;
-   boolean likeAscToggle = false;
 
 
    public ComboListPresenter(ComboListActivity activity) {
@@ -76,14 +73,6 @@ public class ComboListPresenter {
    }
 
    protected void updateComboListByLike() {
-      likeAscToggle = !likeAscToggle;
-      ArrayList<Combo> currentList = adapter.getListOfCombos();
-      Collections.sort(currentList, new Comparator<Combo>() {
-         @Override
-         public int compare(Combo combo, Combo t1) {
-            return likeAscToggle ? combo.getLikeA().compareTo(t1.getLikeA()) : t1.getLikeA().compareTo(combo.getLikeA());
-         }
-      });
-      updateAdapter(currentList);
+      adapter.sortByLike();
    }
 }

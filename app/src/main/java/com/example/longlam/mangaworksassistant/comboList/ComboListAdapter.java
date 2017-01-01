@@ -1,7 +1,5 @@
 package com.example.longlam.mangaworksassistant.comboList;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,10 +65,6 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
       return listOfCombos.size();
    }
 
-   public ArrayList<Combo> getListOfCombos() {
-      return listOfCombos;
-   }
-
    protected void sortByTheme() {
       Collections.sort(listOfCombos, new Comparator<Combo>() {
          @Override
@@ -104,12 +98,12 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
          @Override
          public int compare(Combo combo, Combo t1) {
             int result = combo.getLikeA().compareTo(t1.getLikeA());
-            return (sceneAscToggle ? -1 : 1) * result;
+            return (likeAscToggle ? -1 : 1) * result;
          }
       });
       likeAscToggle = !likeAscToggle;
       themeAscToggle = false;
-      likeAscToggle = false;
+      sceneAscToggle = false;
       notifyDataSetChanged();
    }
 }
