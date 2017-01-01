@@ -54,14 +54,11 @@ public class ComboListActivity extends AppCompatActivity {
    }
 
    @OnClick(R.id.scene_legend)
-   public void doSomething() {
-
+   public void toggleSceneSort() {
+      getPresenter().updateComboListByScene();
    }
-//   public void toggleSceneSort() {
-//      getPresenter().updateComboListByScene();
-//   }
 
-//   @OnClick(R.id.theme_legend)
+   @OnClick(R.id.theme_legend)
    public void toggleThemeSort() {
       getPresenter().updateComboListByTheme();
    }
