@@ -1,13 +1,10 @@
 package com.example.longlam.mangaworksassistant.comboList;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.example.longlam.mangaworksassistant.R;
 import com.example.longlam.mangaworksassistant.sceneTheme.UpdateListActivity;
@@ -21,7 +18,6 @@ import butterknife.OnClick;
 
 public class ComboListActivity extends AppCompatActivity {
 
-   static final int UPDATE_LIST_REQUEST = 1;
    ComboListPresenter comboListPresenter;
 
    @BindView(R.id.combo_recycler_view)
@@ -48,7 +44,7 @@ public class ComboListActivity extends AppCompatActivity {
    }
 
    protected void setComboListRecyclerView(ComboListAdapter comboListAdapter) {
-      final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+      LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
       comboRecyclerView.setLayoutManager(linearLayoutManager);
       comboRecyclerView.setAdapter(comboListAdapter);
    }
@@ -66,52 +62,7 @@ public class ComboListActivity extends AppCompatActivity {
    @OnClick(R.id.update_scene_button)
    public void goToUpdateScene() {
       Intent intent = new Intent(this, UpdateListActivity.class);
-      intent.putExtra("Intent", "what is sup");
-      startActivityForResult(intent, UPDATE_LIST_REQUEST);
-      Log.d(this.getClass().getSimpleName(), "startActiity");
-   }
-
-   public void updateSceneList() {
-      AlertDialog.Builder builder = new AlertDialog.Builder(this);
-      builder.setTitle(R.string.update_scene_list)
-             .setMultiChoiceItems(R.array.scenes, getPresenter().getSceneCheckedItems(), new DialogInterface.OnMultiChoiceClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-                   getPresenter().newSceneItem(i, b);
-                }
-             })
-             .setNegativeButton("Cancel", null)
-             .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                   getPresenter().saveThemeSceneList();
-                   getPresenter().updateSceneList();
-                   getPresenter().updateComboListByScene();
-                }
-             })
-             .show();
-   }
-
-   @OnClick(R.id.update_theme_button)
-   public void updateThemeList() {
-      AlertDialog.Builder builder = new AlertDialog.Builder(this);
-      builder.setTitle(R.string.update_theme_list)
-             .setMultiChoiceItems(R.array.themes, getPresenter().getThemeCheckedItems(), new DialogInterface.OnMultiChoiceClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i, boolean b) {
-                   getPresenter().newThemeItem(i, b);
-                }
-             })
-             .setNegativeButton("Cancel", null)
-             .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                   getPresenter().saveThemeSceneList();
-                   getPresenter().updateThemeList();
-                   getPresenter().updateComboListByScene();
-                }
-             })
-             .show();
+      startActivity(intent);
    }
 
    @OnClick(R.id.like_legend)

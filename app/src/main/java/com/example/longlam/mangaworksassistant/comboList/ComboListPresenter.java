@@ -22,10 +22,6 @@ public class ComboListPresenter {
    ArrayList<Combo> fullCombos;
    boolean[] sceneCheckedItems;
    boolean[] themeCheckedItems;
-   boolean[] newThemeCheckedItems;
-   boolean[] newSceneCheckedItems;
-   boolean sceneAscToggle = false;
-   boolean themeAscToggle = false;
    boolean likeAscToggle = false;
 
 
@@ -48,19 +44,6 @@ public class ComboListPresenter {
       activity.setComboListRecyclerView(adapter);
    }
 
-
-   protected void saveThemeSceneList() {
-      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
-      SharedPreferences.Editor preferenceEditor = sharedPreferences.edit();
-      for (int i = 0; i < themeList.size(); i++) {
-         preferenceEditor.putBoolean(themeList.get(i), themeCheckedItems[i]);
-      }
-      for (int i = 0; i < sceneList.size(); i++) {
-         preferenceEditor.putBoolean(sceneList.get(i), sceneCheckedItems[i]);
-      }
-      preferenceEditor.apply();
-   }
-
    protected void loadThemeSceneList() {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
       for (int i = 0; i < themeList.size(); i++) {
@@ -69,83 +52,27 @@ public class ComboListPresenter {
       for (int i = 0; i < sceneList.size(); i++) {
          sceneCheckedItems[i] = sharedPreferences.getBoolean(sceneList.get(i), sceneCheckedItems[i]);
       }
-      updateComboListByTheme();
+      loadAdapter();
    }
 
-   protected boolean[] getThemeCheckedItems() {
-      newThemeCheckedItems = themeCheckedItems;
-      return themeCheckedItems;
-   }
-
-   protected boolean[] getSceneCheckedItems() {
-      newSceneCheckedItems = sceneCheckedItems;
-      return sceneCheckedItems;
-   }
-
-   protected void updateThemeList() {
-      themeCheckedItems = newThemeCheckedItems;
-   }
-
-   protected void updateSceneList() {
-      sceneCheckedItems = newSceneCheckedItems;
-   }
-
-   protected void newThemeItem(int i, boolean b) {
-      newThemeCheckedItems[i] = b;
-   }
-
-   protected void newSceneItem(int i, boolean b) {
-      newSceneCheckedItems[i] = b;
+   protected void loadAdapter() {
+      ArrayList<Combo> updatedList = new ArrayList<>();
+      for (Combo combo : fullCombos) {
+         int sceneIndex = sceneList.indexOf(combo.getScene());
+         int themeIndex = themeList.indexOf(combo.getTheme());
+         if (sceneCheckedItems[sceneIndex] && themeCheckedItems[themeIndex]) {
+            updatedList.add(combo);
+         }
+      }
+      updateAdapter(updatedList);
    }
 
    protected void updateComboListByTheme() {
-
-      themeAscToggle = !themeAscToggle;
-      ArrayList<Combo> comboList = new ArrayList<Combo>();
-      if (sceneCheckedItems == null || themeCheckedItems == null) {
-         return;
-      }
-      for (int themeIndex = 0; themeIndex < themeCheckedItems.length; themeIndex++) {
-         if (themeCheckedItems[themeIndex]) {
-            for (int sceneIndex = 0; sceneIndex < sceneCheckedItems.length; sceneIndex++) {
-               if (sceneCheckedItems[sceneIndex]) {
-                  String themeItem = themeList.get(themeIndex);
-                  String sceneItem = sceneList.get(sceneIndex);
-                  for (Combo comboItem : fullCombos) {
-                     if (comboItem.isCombo(themeItem, sceneItem)) {
-                        comboList.add(themeAscToggle ? comboList.size() : 0, comboItem); // asc sort
-                     }
-                  }
-               }
-            }
-         }
-      }
-      updateAdapter(comboList);
+      adapter.sortByTheme();
    }
 
    protected void updateComboListByScene() {
-
-      sceneAscToggle = !sceneAscToggle;
-      ArrayList<Combo> comboList = new ArrayList<Combo>();
-      if (sceneCheckedItems == null || themeCheckedItems == null) {
-         return;
-      }
-      for (int sceneIndex = 0; sceneIndex < sceneCheckedItems.length; sceneIndex++) {
-         if (sceneCheckedItems[sceneIndex]) {
-            for (int themeIndex = 0; themeIndex < themeCheckedItems.length; themeIndex++) {
-               if (themeCheckedItems[themeIndex]) {
-                  String themeItem = themeList.get(themeIndex);
-                  String sceneItem = sceneList.get(sceneIndex);
-                  for (Combo comboItem : fullCombos) {
-                     if (comboItem.isCombo(themeItem, sceneItem)) {
-                        comboList.add(sceneAscToggle ? comboList.size() : 0, comboItem); // asc sort
-                     }
-                  }
-               }
-            }
-         }
-      }
-      updateAdapter(comboList);
+      adapter.sortByScene();
    }
 
    protected void updateComboListByLike() {

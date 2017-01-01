@@ -5,44 +5,25 @@ import android.preference.PreferenceManager;
 
 import com.example.longlam.mangaworksassistant.R;
 
-import java.util.ArrayList;
-
 public class UpdateListPresenter {
    private UpdateListActivity activity;
 
    private UpdateListSceneThemeAdapter sceneListAdapter;
    private UpdateListSceneThemeAdapter themeListAdapter;
 
-   boolean[] sceneCheckedList;
-   boolean[] themeCheckedList;
-
-   public boolean[] getSceneCheckedList() {
-      if (sceneCheckedList == null) {
-         sceneCheckedList = new boolean[sceneListAdapter.getItemCount()];
-      }
-      return sceneCheckedList;
-   }
-
-   public boolean[] getThemeCheckedList() {
-      if (themeCheckedList == null) {
-         themeCheckedList = new boolean[themeListAdapter.getItemCount()];
-      }
-      return themeCheckedList;
-   }
-
    protected UpdateListPresenter(UpdateListActivity activity) {
       this.activity = activity;
    }
 
    protected UpdateListSceneThemeAdapter getSceneAdapter() {
-      if(sceneListAdapter == null ) {
+      if (sceneListAdapter == null) {
          sceneListAdapter = new UpdateListSceneThemeAdapter(activity.getStringArray(R.array.scenes));
       }
       return sceneListAdapter;
    }
 
    protected UpdateListSceneThemeAdapter getThemeAdapter() {
-      if(themeListAdapter == null ) {
+      if (themeListAdapter == null) {
          themeListAdapter = new UpdateListSceneThemeAdapter(activity.getStringArray(R.array.themes));
       }
       return themeListAdapter;

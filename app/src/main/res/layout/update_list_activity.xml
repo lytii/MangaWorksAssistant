@@ -48,15 +48,15 @@
    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:orientation="horizontal"
       android:layout_above="@id/update_buttons_layout"
-      android:layout_below="@id/legends_divider">
+      android:layout_below="@id/legends_divider"
+      android:orientation="horizontal">
 
       <android.support.v7.widget.RecyclerView
-         android:layout_weight="1"
-         android:id="@+id/update_list_scene_recycler"
+         android:id="@+id/update_list_theme_recycler"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content">
+         android:layout_height="wrap_content"
+         android:layout_weight="1">
       </android.support.v7.widget.RecyclerView>
 
       <View
@@ -66,10 +66,10 @@
          android:background="@color/cardview_dark_background" />
 
       <android.support.v7.widget.RecyclerView
-         android:layout_weight="1"
-         android:id="@+id/update_list_theme_recycler"
+         android:id="@+id/update_list_scene_recycler"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content">
+         android:layout_height="wrap_content"
+         android:layout_weight="1">
       </android.support.v7.widget.RecyclerView>
 
    </LinearLayout>
@@ -82,17 +82,17 @@
 
       <Button
          android:id="@+id/cancel_button"
-         android:layout_weight="1"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:text="Cancel"/>
+         android:layout_weight="1"
+         android:text="Cancel" />
 
       <Button
          android:id="@+id/save_button"
-         android:layout_weight="1"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:text="Save"/>
+         android:layout_weight="1"
+         android:text="Save" />
 
    </LinearLayout>
 

@@ -74,7 +74,7 @@ public class UpdateListActivity extends AppCompatActivity {
    }
 
    private UpdateListPresenter getPresenter() {
-      if(presenter == null) {
+      if (presenter == null) {
          presenter = new UpdateListPresenter(this);
       }
       return presenter;

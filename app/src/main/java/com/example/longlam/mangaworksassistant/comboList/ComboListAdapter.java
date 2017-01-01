@@ -1,5 +1,7 @@
 package com.example.longlam.mangaworksassistant.comboList;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,8 @@ import com.example.longlam.mangaworksassistant.Combo;
 import com.example.longlam.mangaworksassistant.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,6 +21,9 @@ import butterknife.ButterKnife;
 public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.ComboViewHolder> {
 
    private ArrayList<Combo> listOfCombos;
+   private boolean themeAscToggle;
+   private boolean sceneAscToggle;
+   private boolean likeAscToggle;
 
    public class ComboViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,6 +42,9 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
 
    public ComboListAdapter(ArrayList<Combo> listOfCombos) {
       this.listOfCombos = listOfCombos;
+      themeAscToggle = false;
+      sceneAscToggle = false;
+      likeAscToggle = false;
    }
 
    @Override
@@ -59,5 +69,47 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
 
    public ArrayList<Combo> getListOfCombos() {
       return listOfCombos;
+   }
+
+   protected void sortByTheme() {
+      Collections.sort(listOfCombos, new Comparator<Combo>() {
+         @Override
+         public int compare(Combo combo, Combo t1) {
+            int result = combo.getTheme().compareTo(t1.getTheme());
+            return (themeAscToggle ? -1 : 1) * result;
+         }
+      });
+      themeAscToggle = !themeAscToggle;
+      sceneAscToggle = false;
+      likeAscToggle = false;
+      notifyDataSetChanged();
+   }
+
+   protected void sortByScene() {
+      Collections.sort(listOfCombos, new Comparator<Combo>() {
+         @Override
+         public int compare(Combo combo, Combo t1) {
+            int result = combo.getScene().compareTo(t1.getScene());
+            return (sceneAscToggle ? -1 : 1) * result;
+         }
+      });
+      sceneAscToggle = !sceneAscToggle;
+      themeAscToggle = false;
+      likeAscToggle = false;
+      notifyDataSetChanged();
+   }
+
+   protected void sortByLike() {
+      Collections.sort(listOfCombos, new Comparator<Combo>() {
+         @Override
+         public int compare(Combo combo, Combo t1) {
+            int result = combo.getLikeA().compareTo(t1.getLikeA());
+            return (sceneAscToggle ? -1 : 1) * result;
+         }
+      });
+      likeAscToggle = !likeAscToggle;
+      themeAscToggle = false;
+      likeAscToggle = false;
+      notifyDataSetChanged();
    }
 }
