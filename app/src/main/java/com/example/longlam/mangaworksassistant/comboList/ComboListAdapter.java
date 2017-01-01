@@ -1,5 +1,6 @@
 package com.example.longlam.mangaworksassistant.comboList;
 
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.longlam.mangaworksassistant.Combo;
+import com.example.longlam.mangaworksassistant.HardCodedCombos;
 import com.example.longlam.mangaworksassistant.R;
 
 import java.util.ArrayList;
@@ -22,6 +24,11 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
    private boolean themeAscToggle;
    private boolean sceneAscToggle;
    private boolean likeAscToggle;
+
+   private ArrayList<String> sceneList;
+   private ArrayList<String> themeList;
+   private boolean[] sceneCheckedItems;
+   private boolean[] themeCheckedItems;
 
    public class ComboViewHolder extends RecyclerView.ViewHolder {
 
@@ -93,17 +100,34 @@ public class ComboListAdapter extends RecyclerView.Adapter<ComboListAdapter.Comb
       notifyDataSetChanged();
    }
 
-   protected void sortByLike() {
-      Collections.sort(listOfCombos, new Comparator<Combo>() {
-         @Override
-         public int compare(Combo combo, Combo t1) {
-            int result = combo.getLikeA().compareTo(t1.getLikeA());
-            return (likeAscToggle ? -1 : 1) * result;
+   protected void loadCheckedThemesScenes(SharedPreferences sharedPreferences) {
+      for (int i = 0; i < themeList.size(); i++) {
+         themeCheckedItems[i] = sharedPreferences.getBoolean(themeList.get(i), themeCheckedItems[i]);
+      }
+      for (int i = 0; i < sceneList.size(); i++) {
+         sceneCheckedItems[i] = sharedPreferences.getBoolean(sceneList.get(i), sceneCheckedItems[i]);
+      }
+   }
+
+   protected void setUpCombos() {
+      ArrayList<Combo> fullCombos = HardCodedCombos.parseCombos();
+      for (Combo combo : fullCombos) {
+         int sceneIndex = sceneList.indexOf(combo.getScene());
+         int themeIndex = themeList.indexOf(combo.getTheme());
+         if (sceneCheckedItems[sceneIndex] && themeCheckedItems[themeIndex]) {
+            listOfCombos.add(combo);
          }
-      });
-      likeAscToggle = !likeAscToggle;
-      themeAscToggle = false;
-      sceneAscToggle = false;
+      }
       notifyDataSetChanged();
+   }
+
+   protected void setSceneList(ArrayList<String> sceneList) {
+      this.sceneList = sceneList;
+      sceneCheckedItems = new boolean[sceneList.size()];
+   }
+
+   protected void setThemeList(ArrayList<String> themeList) {
+      this.themeList = themeList;
+      themeCheckedItems = new boolean[themeList.size()];
    }
 }

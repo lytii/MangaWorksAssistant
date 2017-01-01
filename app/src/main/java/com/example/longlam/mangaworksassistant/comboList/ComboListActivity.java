@@ -36,7 +36,7 @@ public class ComboListActivity extends AppCompatActivity {
    @Override
    protected void onResume() {
       super.onResume();
-      getPresenter().loadThemeSceneList();
+      getPresenter().setUpCombos();
    }
 
    protected ArrayList<String> getStringArray(int id) {
@@ -63,11 +63,6 @@ public class ComboListActivity extends AppCompatActivity {
    public void goToUpdateScene() {
       Intent intent = new Intent(this, UpdateListActivity.class);
       startActivity(intent);
-   }
-
-   @OnClick(R.id.like_legend)
-   public void toggleLikeSort() {
-      getPresenter().updateComboListByLike();
    }
 
    protected ComboListPresenter getPresenter() {
